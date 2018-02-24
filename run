@@ -24,6 +24,12 @@ then
         echo "Can't find spec2k6.tar.gz"
         exit 1
     fi
+    checksum=$(sha256sum $dir/spec2k6.tar.gz | cut -d " " -f1)
+    if [ "$checksum" != "eb6c81181f14204aa23910c8136382281279ff9c6d93a47fa05290becc35d402" ]
+    then
+        echo "Wrong checksum"
+        exit 1
+    fi
     tar xf $dir/spec2k6.tar.gz
     cp config/* $specdir/config/
 fi
