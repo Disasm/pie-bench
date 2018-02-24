@@ -1,0 +1,20 @@
+#!/bin/sh
+
+specdir=/data/install
+
+gcc_version=$(gcc -v 2>&1 | grep "gcc version" | cut -d " " -f3)
+gcc_short_version=$(echo $gcc_version | cut -d "." -f1,2 | tr -d .)
+config_name="linux64-amd64-gcc${gcc_short_version}-pie.cfg"
+config_path=$specdir/config/$config_name
+
+if [ ! -f "$config_path" ]
+then
+    echo "Can't find config $config_name"
+    exit 1
+fi
+
+
+cd $specdir
+. ./shrc
+echo "CMDLINE: $*"
+runspec --config=$config_name $@

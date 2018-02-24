@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dir=$(dirname $(readlink -f $0))
+
+docker run --user=$(id -u) -ti -v $dir/..:/data spec /entry $@
