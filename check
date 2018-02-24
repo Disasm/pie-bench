@@ -1,0 +1,7 @@
+#!/bin/sh
+
+file -e elf install/benchspec/CPU2006/*/exe/*
+nexe=$(file install/benchspec/CPU2006/*/exe/* | grep " executable" | wc -l)
+nshr=$(file install/benchspec/CPU2006/*/exe/* | grep " shared object" | wc -l)
+echo "Executables:    $nexe"
+echo "Shared objects: $nshr"
