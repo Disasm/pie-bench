@@ -35,4 +35,4 @@ then
 fi
 
 echo "Launching SPEC..."
-docker/run --noreportable --tune=all $@ all
+docker/run --noreportable --tune=all $@ all ^perlbench ^gcc ^gamess ^cactusADM ^dealII
